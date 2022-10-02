@@ -1,0 +1,130 @@
+.pidrozdil {
+  flex: 4;
+  padding: 20px;
+}
+
+.pidrozdilTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pidrozdilAddButton {
+  width: 80px;
+  border: none;
+  padding: 5px;
+  background-color: teal;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pidrozdilTop {
+  display: flex;
+}
+
+.pidrozdilTopLeft,
+.pidrozdilTopRight {
+  flex: 1;
+}
+
+.pidrozdilTopRight {
+  padding: 20px;
+  margin: 20px;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.pidrozdilInfoImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.pidrozdilInfoTop {
+  display: flex;
+  align-items: center;
+}
+
+.pidrozdilName {
+  font-weight: 600;
+}
+
+.pidrozdilInfoBottom {
+  margin-top: 10px;
+}
+
+.pidrozdilInfoItem {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pidrozdilInfoValue {
+  font-weight: 300;
+}
+
+.pidrozdilBottom {
+  padding: 20px;
+  margin: 20px;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.pidrozdilForm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pidrozdilFormLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.pidrozdilFormLeft > label {
+  margin-bottom: 10px;
+  color: gray;
+}
+
+.pidrozdilFormLeft > input {
+  margin-bottom: 10px;
+  border: none;
+  padding: 5px;
+  border-bottom: 1px solid gray;
+}
+
+.pidrozdilFormLeft >select{
+  margin-bottom: 10px;
+}
+
+.pidrozdilUploadImg{
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.pidrozdilFormRight{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.pidrozdilUpload{
+  display: flex;
+  align-items: center;
+}
+
+.pidrozdilButton{
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: darkblue;
+  color:white;
+  font-weight: 600;
+  cursor: pointer;
+}
