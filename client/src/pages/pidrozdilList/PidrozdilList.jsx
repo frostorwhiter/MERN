@@ -45,7 +45,7 @@ export default function PidrozdilList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/pidrozdil/" + params.row.id}>
+            <Link to={{ pathname: "/pidrozdils/" + params.row._id, pidrozdil: params.row }}>
               <button className="pidrozdilListEdit">Огляд</button>
             </Link>
             <button className="pidrozdilListEdit">Редагувати</button>

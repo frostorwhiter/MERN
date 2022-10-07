@@ -31,6 +31,7 @@ export const deletePidrozdil = async (req, res, next) => {
     next(err);
   }
 };
+
 export const getPidrozdil = async (req, res, next) => {
   try {
     const pidrozdil = await Pidrozdil.findById(req.params.id);
@@ -39,12 +40,12 @@ export const getPidrozdil = async (req, res, next) => {
     next(err);
   }
 };
+
 export const getPidrozdils = async (req, res, next) => {
   const { min, max, ...others } = req.query;
   try {
     const pidrozdils = await Pidrozdil.find({
       ...others,
-      cheapestPrice: { $gt: min | 1, $lt: max || 999 },
     }).limit(req.query.limit);
     res.status(200).json(Pidrozdils);
   } catch (err) {
