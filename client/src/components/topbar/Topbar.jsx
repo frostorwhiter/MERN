@@ -15,8 +15,8 @@ export default function Topbar() {
             <Settings />
           </div>
           <li className="topRight">
-              <ExitToApp className="topbarIconContainer" />
-            </li>
+            <ExitToApp className="topbarIconContainer" />
+          </li>
         </div>
       </div>
     </div>

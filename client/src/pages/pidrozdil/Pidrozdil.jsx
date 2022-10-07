@@ -15,7 +15,7 @@ export default function Pidrozdil() {
       </div>
       <div className="pidrozdilTop">
           <div className="pidrozdilTopLeft">
-              <Chart data={pidrozdilData} dataKey="Sales" title="Середня оцінка викладачів"/>
+              <Chart data={pidrozdilData} dataKey="Середея оцінка" title="Середня оцінка викладачів"/>
           </div>
           <div className="pidrozdilTopRight">
               <div className="pidrozdilInfoTop">

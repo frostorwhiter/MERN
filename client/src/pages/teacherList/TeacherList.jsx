@@ -4,6 +4,7 @@ import { DeleteOutline } from "@material-ui/icons";
 import { teacherRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 export default function TeacherList() {
   const [data, setData] = useState(teacherRows);

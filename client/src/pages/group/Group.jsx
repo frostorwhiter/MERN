@@ -15,7 +15,7 @@ export default function Group() {
       </div>
       <div className="groupTop">
           <div className="groupTopLeft">
-              <Chart data={groupData} dataKey="Sales" title="Середня оцінка викладачів"/>
+              <Chart data={groupData} dataKey="Середня оцінка" title="Середня оцінка викладачів"/>
           </div>
           <div className="groupTopRight">
               <div className="groupInfoTop">

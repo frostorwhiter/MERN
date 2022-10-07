@@ -28,7 +28,7 @@ export default function Teacher() {
             </div>
           </div>
           <div className="teacherShowBottom">
-            <span className="teacherShowTitle">Account Details</span>
+            <span className="teacherShowTitle">Деталі про викладача</span>
             <div className="teacherShowInfo">
               <PermIdentity className="teacherShowIcon" />
               <span className="teacherShowInfoTitle">annabeck99</span>
@@ -49,7 +49,7 @@ export default function Teacher() {
           </div>
         </div>
         <div className="teacherUpdate">
-          <span className="teacherUpdateTitle">Edit</span>
+          <span className="teacherUpdateTitle">Редагувати</span>
           <form className="teacherUpdateForm">
             <div className="teacherUpdateLeft">
               <div className="teacherUpdateItem">
