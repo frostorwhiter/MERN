@@ -3,6 +3,7 @@ import "./group.css";
 import Chart from "../../components/chart/Chart"
 import {groupData} from "../../dummyData"
 import { Publish } from "@material-ui/icons";
+import React from 'react'
 
 export default function Group() {
   return (

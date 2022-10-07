@@ -5,19 +5,21 @@ import { pidrozdilRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useContext, useEffect } from "react";
-
 import { PidrozdilContext } from "../../context/pidrozdilContext/PidrozdilContext";
 import { deletePidrozdils, getPidrozdils } from "../../context/pidrozdilContext/apiCalls";
 export default function PidrozdilList() {
-  const { pidrozdils, dispatch } = useContext(PidrozdilContext);
 
-  useEffect(() => {
-      getPidrozdils(dispatch);
-  }, [dispatch]);
+    const { pidrozdils, dispatch } = useContext(PidrozdilContext);
 
-  const handleDelete = (id) => {
-      deletePidrozdils(id, dispatch);
-  };
+    useEffect(() => {
+        getPidrozdils(dispatch);
+    }, [dispatch]);
+
+    const handleDelete = (id) => {
+        deletePidrozdils(id, dispatch);
+    };
+
+
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -26,7 +28,7 @@ export default function PidrozdilList() {
       width: 300,
       renderCell: (params) => {
         return (
-          <div className="pidrozdilListItem">categorie
+          <div className="pidrozdilListItem">
             <img className="pidrozdilListImg" src={params.row.img} alt="" />
             {params.row.name}
           </div>

@@ -2,6 +2,7 @@ import "./widgetSm.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { pidrozdilRows } from "../../dummyData";
 import { useState } from "react";
+import React from 'react'
 
 export default function PidrozdilList() {
   const [data, setData] = useState(pidrozdilRows);

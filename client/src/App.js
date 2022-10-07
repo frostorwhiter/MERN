@@ -3,7 +3,8 @@ import Topbar from "./components/topbar/Topbar";
 import "./App.css";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route ,Routes } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { useContext } from "react";
