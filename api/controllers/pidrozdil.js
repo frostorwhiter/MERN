@@ -51,24 +51,9 @@ export const getPidrozdils = async (req, res, next) => {
     next(err);
   }
 };
-export const countByCity = async (req, res, next) => {
-  const cities = req.query.cities.split(",");
-  try {
-    const list = await Promise.all(
-      cities.map((city) => {
-        return Pidrozdil.countDocuments({ city: city });
-      })
-    );
-    res.status(200).json(list);
-  } catch (err) {
-    next(err);
-  }
-};
 export const countByType = async (req, res, next) => {
   try {
     const pidrozdilCount = await Pidrozdil.countDocuments({ type: "pidrozdil" });
-
-
     res.status(200).json([
       { type: "Pidrozdil", count: PidrozdilCount },
 
