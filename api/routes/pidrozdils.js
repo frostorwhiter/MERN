@@ -5,7 +5,6 @@ import {
     deletePidrozdil,
     getPidrozdil,
     getPidrozdils,
-    countByCity,
     countByType,
     getPidrozdilTeachers,
   } from "../controllers/pidrozdil.js";
@@ -25,7 +24,6 @@ router.get("/find/:id", getPidrozdil);
 //GET ALL
 
 router.get("/", getPidrozdils);
-router.get("/countByCity", countByCity);
 router.get("/countByType", countByType);
 router.get("/teacher/:id", getPidrozdilTeachers);
 
