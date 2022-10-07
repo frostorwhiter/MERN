@@ -13,7 +13,7 @@ export default function PidrozdilList() {
 
     useEffect(() => {
         getPidrozdils(dispatch);
-    }, [dispatch]);
+    });
 
     const handleDelete = (id) => {
         deletePidrozdils(id, dispatch);

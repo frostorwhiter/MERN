@@ -42,12 +42,9 @@ export const getPidrozdil = async (req, res, next) => {
 };
 
 export const getPidrozdils = async (req, res, next) => {
-  const { min, max, ...others } = req.query;
   try {
-    const pidrozdils = await Pidrozdil.find({
-      ...others,
-    }).limit(req.query.limit);
-    res.status(200).json(Pidrozdils);
+    const pidrozdils = await Pidrozdil.find();
+    res.status(200).json(pidrozdils);
   } catch (err) {
     next(err);
   }
@@ -56,7 +53,7 @@ export const countByType = async (req, res, next) => {
   try {
     const pidrozdilCount = await Pidrozdil.countDocuments({ type: "pidrozdil" });
     res.status(200).json([
-      { type: "Pidrozdil", count: PidrozdilCount },
+      { type: "Pidrozdil", count: pidrozdilCount },
 
     ]);
   } catch (err) {
