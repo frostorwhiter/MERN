@@ -4,14 +4,20 @@ import { DeleteOutline } from "@material-ui/icons";
 import { pidrozdilRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useContext, useEffect } from "react";
 
+import { PidrozdilContext } from "../../context/pidrozdilContext/PidrozdilContext";
+import { deletePidrozdils, getPidrozdils } from "../../context/pidrozdilContext/apiCalls";
 export default function PidrozdilList() {
-  const [data, setData] = useState(pidrozdilRows);
+  const { pidrozdils, dispatch } = useContext(PidrozdilContext);
+
+  useEffect(() => {
+      getPidrozdils(dispatch);
+  }, [dispatch]);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+      deletePidrozdils(id, dispatch);
   };
-  
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -20,7 +26,7 @@ export default function PidrozdilList() {
       width: 300,
       renderCell: (params) => {
         return (
-          <div className="pidrozdilListItem">
+          <div className="pidrozdilListItem">categorie
             <img className="pidrozdilListImg" src={params.row.img} alt="" />
             {params.row.name}
           </div>
@@ -54,7 +60,7 @@ export default function PidrozdilList() {
   return (
     <div className="pidrozdilList">
       <DataGrid
-        rows={data}
+        rows={pidrozdils}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
