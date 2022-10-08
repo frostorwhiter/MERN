@@ -1,15 +1,15 @@
-import "./newTeacher.css";
+import "./newGroup.css";
 import { useContext, useEffect, useState } from "react"
 import{ Publish} from "@material-ui/icons";
 import { getPidrozdils } from "../../context/pidrozdilContext/apiCalls"
-import { createTeachers, getTeachers } from "../../context/teacherContext/apiCalls"
-import { TeacherContext } from "../../context/teacherContext/TeacherContext"
+import { createGroups, getGroups } from "../../context/groupContext/apiCalls"
+import { GroupContext } from "../../context/groupContext/GroupContext"
 import { PidrozdilContext } from "../../context/pidrozdilContext/PidrozdilContext"
 
-export default function NewTeacher() {
+export default function NewGroup() {
 
-  const [teachers, setTeacher] = useState(null)
-  const { dispatch } = useContext(TeacherContext)
+  const [groups, setGroup] = useState(null)
+  const { dispatch } = useContext(GroupContext)
   const { pidrozdils, dispatch: dispatchCatgorie } = useContext(PidrozdilContext);
 
   useEffect(() => {
@@ -18,68 +18,68 @@ export default function NewTeacher() {
 
   const handleChange = (e) => {
       const value = e.target.value;
-      setTeacher({ ...teachers, [e.target.name]: value });
+      setGroup({ ...groups, [e.target.name]: value });
   };
 
   const hedleSelect = (e) => {
       const value = e.target.value;
-      setTeacher({ ...teachers, [e.target.name]: value });
+      setGroup({ ...groups, [e.target.name]: value });
   };
 
-  console.log(teachers);
+  console.log(groups);
 
   const handleSubmit = (e) => {
       e.preventDefault();
 
-      createTeachers(teachers, dispatch)
+      createGroups(groups, dispatch)
   };
 
 
   return (
-    <div className="newTeacher">
-      <h1 className="newTeacherTitle">New Teacher</h1>
-      <form className="newTeacherForm">
-        <div className="newTeacherItem">
-          <label>Teachername</label>
+    <div className="newGroup">
+      <h1 className="newGroupTitle">New Group</h1>
+      <form className="newGroupForm">
+        <div className="newGroupItem">
+          <label>Groupname</label>
           <input type="text" placeholder="john" onChange={handleChange}/>
         </div>
-        <div className="newTeacherItem">
+        <div className="newGroupItem">
           <label>Full Name</label>
           <input type="text" placeholder="John Smith" onChange={handleChange}/>
         </div>
-        <div className="newTeacherItem">
+        <div className="newGroupItem">
           <label>Email</label>
           <input type="email" placeholder="john@gmail.com" onChange={handleChange} />
         </div>
-        <div className="newTeacherItem">
+        <div className="newGroupItem">
           <label>Phone</label>
           <input type="text" placeholder="+1 123 456 78" onChange={handleChange}/>
         </div>
         
-        <div className="newTeacherItem">
+        <div className="newGroupItem">
           <label>Active</label>
-          <select className="newTeacherSelect" name="active" id="active">
+          <select className="newGroupSelect" name="active" id="active">
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
         </div>
-        <div className="newTeacherItem">
+        <div className="newGroupItem">
           <label>Факультет</label>
-          <select className="newTeacherSelect" name="active" id="active">
+          <select className="newGroupSelect" name="active" id="active">
           </select>
         </div>
-        <div className="teacherUpdateUpload">
+        <div className="groupUpdateUpload">
                 <img
-                  className="teacherUpdateImg"
+                  className="groupUpdateImg"
                   src="https://kim.pnu.edu.ua/wp-content/uploads/sites/58/2018/06/cropped-logo-e1528979752421-1.png"
                   alt=""
                 />
                 <label htmlFor="file">
-                  <Publish className="teacherUpdateIcon" />
+                  <Publish className="groupUpdateIcon" />
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
         </div>
-        <button className="newTeacherButton" onClick={handleSubmit}>Create</button>
+        <button className="newGroupButton" onClick={handleSubmit}>Create</button>
       </form>
     </div>
   );

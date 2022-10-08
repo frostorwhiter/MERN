@@ -9,7 +9,7 @@ import {
   AddCircle,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-
+import React from 'react'
 export default function Sidebar() {
   return (
     <div className="sidebar">
@@ -62,7 +62,12 @@ export default function Sidebar() {
                 Добавити нового викладача
               </li>
             </Link>
-            
+            <Link to="/newGroup" className="link">
+              <li className="sidebarListItem">
+                <AddCircle className="sidebarIcon" />
+                Добавити нову групу
+              </li>
+            </Link>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Звіт

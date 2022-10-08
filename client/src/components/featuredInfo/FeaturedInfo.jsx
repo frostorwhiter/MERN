@@ -1,5 +1,5 @@
 import "./featuredInfo.css";
-
+import React from 'react'
 export default function FeaturedInfo() {
   return (
     <div className="featured">
@@ -10,8 +10,7 @@ export default function FeaturedInfo() {
               className="Teacherimg"
             />
         <div className="featuredRatingContainer">
-          <span className="featuredRating">Ім'я викладача
-          </span>
+          <span className="featuredRating">Ім'я викладача</span>
         </div>
         <span className="featuredSub">Кафедра Назва</span>
       </div>

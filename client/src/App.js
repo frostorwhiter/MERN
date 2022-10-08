@@ -1,3 +1,4 @@
+
 import Sidebar from "./components/sidebar/Sidebar";
 import Topbar from "./components/topbar/Topbar";
 import "./App.css";
@@ -8,13 +9,15 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route ,Routes } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { useContext } from "react";
-
+import { hotelColumns, roomColumns, groupColumns } from "./datatablesource";
 import TeacherList from "./pages/teacherList/TeacherList";
 import Teacher from "./pages/teacher/Teacher";
 import PidrozdilList from "./pages/pidrozdilList/PidrozdilList";
 import Pidrozdil from "./pages/pidrozdil/Pidrozdil";
 import NewPidrozdil from "./pages/newPidrozdil/NewPidrozdil";
 import NewTeacher from "./pages/newTeacher/NewTeacher";
+import NewGroup from "./pages/newGroup/NewGroup";
+
 import Question from "./pages/question/Question"
 import QuestionList from "./pages/questionList/QuestionList"
 import Group from "./pages/group/Group";
@@ -46,6 +49,8 @@ function App() {
             </Route>
             <Route path="group" element={<ProtectedRoute><Group /></ProtectedRoute>}>
             </Route>
+            <Route path="newGroup" element={<ProtectedRoute><NewGroup /></ProtectedRoute>}>
+            </Route>
             <Route path="groups" element={<ProtectedRoute><GroupList /></ProtectedRoute>}></Route>
             <Route path="teachers" element={<ProtectedRoute><TeacherList /></ProtectedRoute>}>
             </Route>
@@ -53,11 +58,11 @@ function App() {
             </Route>
             <Route path="newTeacher" element={<ProtectedRoute><NewTeacher /></ProtectedRoute>}>
             </Route>
-            <Route path="pidrozdils" element={<ProtectedRoute><PidrozdilList /></ProtectedRoute>}>
+            <Route path="pidrozdils" element={<ProtectedRoute><PidrozdilList columns={groupColumns}/></ProtectedRoute>}>
             </Route>
             <Route path="pidrozdil/:pidrozdilId" element={<ProtectedRoute><Pidrozdil /></ProtectedRoute>}>
             </Route>
-            <Route path="newpidrozdil" element={<ProtectedRoute><NewPidrozdil /></ProtectedRoute>}>
+            <Route path="newpidrozdil" element={<ProtectedRoute><NewPidrozdil/></ProtectedRoute>}>
             </Route>
             <Route path="Question" element={<ProtectedRoute><Question /></ProtectedRoute>}>
             </Route>

@@ -5,16 +5,13 @@ const TeacherSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    price: {
-      type: Number,
-      required: true,
-    },
-
     desc: {
       type: String,
       required: true,
     },
-    teacherNumbers: [{ number: Number, unavailableDates: {type: [Date]}}],
+    group: {
+      type: [String],
+    },
   },
   { timestamps: true }
 );

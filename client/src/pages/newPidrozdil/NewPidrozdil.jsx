@@ -31,7 +31,7 @@ export default function NewPidrozdil() {
           <label>Назва</label>
           <input type="text" placeholder="Назва Факультету" name="name" onChange={handleChange}/>
         </div>
-        <button className="addPidrozdilButton">Створити</button>
+        <button className="addPidrozdilButton" onChange={handleSubmit}>Створити</button>
       </form>
     </div>
   );

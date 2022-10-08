@@ -8,10 +8,6 @@ const PidrozdilSchema = new mongoose.Schema({
   photos: {
     type: [String],
   },
-  title: {
-    type: String,
-    required: true,
-  },
   teacher: {
     type: [String],
   },

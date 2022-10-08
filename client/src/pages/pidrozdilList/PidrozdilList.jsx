@@ -1,9 +1,7 @@
 import "./pidrozdilList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { pidrozdilRows } from "../../dummyData";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useContext, useEffect } from "react";
 import { PidrozdilContext } from "../../context/pidrozdilContext/PidrozdilContext";
 import { deletePidrozdils, getPidrozdils } from "../../context/pidrozdilContext/apiCalls";
@@ -23,13 +21,12 @@ export default function PidrozdilList() {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "pidrozdil",
+      field: "pidrozdils",
       headerName: "Факультети",
       width: 300,
       renderCell: (params) => {
         return (
           <div className="pidrozdilListItem">
-            <img className="pidrozdilListImg" src={params.row.img} alt="" />
             {params.row.name}
           </div>
         );
@@ -45,7 +42,7 @@ export default function PidrozdilList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={{ pathname: "/pidrozdils/" + params.row._id, pidrozdil: params.row }}>
+            <Link to={{ pathname: "/pidrozdils" + params.row._id, pidrozdil: params.row }}>
               <button className="pidrozdilListEdit">Огляд</button>
             </Link>
             <button className="pidrozdilListEdit">Редагувати</button>
