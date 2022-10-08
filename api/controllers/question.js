@@ -1,82 +1,81 @@
-import Question from "../models/Teacher.js";
+import Question from "../models/Question.js";
 import Group from "../models/Group.js";
 import { createError } from "../utils/error.js";
-import Question from "../models/Question.js";
 
-export const createTeacher = async (req, res, next) => {
+export const createQuestion = async (req, res, next) => {
   const groupId = req.params.groupid;
   const newQuestion = new Question(req.body);
 
   try {
-    const savedTeacher = await newTeacher.save();
+    const savedQuestion = await newQuestion.save();
     try {
-      await Pidrozdil.findByIdAndUpdate(pidrozdilId, {
-        $push: { teachers: savedTeacher._id },
+      await Group.findByIdAndUpdate(groupId, {
+        $push: { questions: savedQuestion._id },
       });
     } catch (err) {
       next(err);
     }
-    res.status(200).json(savedTeacher);
+    res.status(200).json(savedQuestion);
   } catch (err) {
     next(err);
   }
 };
 
-export const updateTeacher = async (req, res, next) => {
+export const updateQuestion = async (req, res, next) => {
   try {
-    const updatedTeacher = await Teacher.findByIdAndUpdate(
+    const updatedQuestion = await Question.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
       { new: true }
     );
-    res.status(200).json(updatedTeacher);
+    res.status(200).json(updatedQuestion);
   } catch (err) {
     next(err);
   }
 };
-export const updateTeacherAvailability = async (req, res, next) => {
+export const updateQuestionAvailability = async (req, res, next) => {
   try {
-    await Teacher.updateOne(
-      { "teacherNumbers._id": req.params.id },
+    await Question.updateOne(
+      { "questionNumbers._id": req.params.id },
       {
         $push: {
-          "teacherNumbers.$.unavailableDates": req.body.dates
+          "questionNumbers.$.unavailableDates": req.body.dates
         },
       }
     );
-    res.status(200).json("Teacher status has been updated.");
+    res.status(200).json("Question status has been updated.");
   } catch (err) {
     next(err);
   }
 };
-export const deleteTeacher = async (req, res, next) => {
-  const pidrozdilId = req.params.pidrozdilid;
+export const deleteQuestion = async (req, res, next) => {
+  const groupId = req.params.groupid;
   try {
-    await Teacher.findByIdAndDelete(req.params.id);
+    await Question.findByIdAndDelete(req.params.id);
     try {
-      await Pidrozdil.findByIdAndUpdate(pidrozdilId, {
-        $pull: { teachers: req.params.id },
+      await Group.findByIdAndUpdate(groupId, {
+        $pull: { questions: req.params.id },
       });
     } catch (err) {
       next(err);
     }
-    res.status(200).json("Teacher has been deleted.");
+    res.status(200).json("Question has been deleted.");
   } catch (err) {
     next(err);
   }
 };
-export const getTeacher = async (req, res, next) => {
+export const getQuestion = async (req, res, next) => {
   try {
-    const teacher = await Teacher.findById(req.params.id);
-    res.status(200).json(teacher);
+    const question = await Question.findById(req.params.id);
+    res.status(200).json(question);
   } catch (err) {
     next(err);
   }
 };
-export const getTeachers = async (req, res, next) => {
+export const getQuestions = async (req, res, next) => {
   try {
-    const teachers = await Teacher.find();
-    res.status(200).json(teachers);
+    const questions = await Question.find();
+    res.status(200).json(questions);
   } catch (err) {
     next(err);
   }

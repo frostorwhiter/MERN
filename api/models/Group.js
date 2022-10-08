@@ -9,6 +9,9 @@ const GrouplSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
+      question: {
+        type: [String],
+      },
       isAdmin: {
         type: Boolean,
         default: false,

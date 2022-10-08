@@ -4,17 +4,17 @@ export default function Question() {
   return (
     <div className="question">
       <div className="questionTitleContainer">
-        <h1 className="questionTitle">Назва Факультету</h1>
-        <button className="teacherUpdateButton">Update</button>
+        <h1 className="questionTitle">Питання</h1>
+        <button className="questionUpdateButton">Update</button>
       </div>
       <div className="questionTop">
           <div className="questionTopRight">
-          <div className="teacherUpdateItem">
+          <div className="questionUpdateItem">
             <label>Phone</label>
             <input
                   type="text"
                   placeholder="Текст Питання"
-                  className="teacherUpdateInput"
+                  className="questionUpdateInput"
             />
             </div>
           </div>
