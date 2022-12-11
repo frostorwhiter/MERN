@@ -5,16 +5,23 @@ import { groupRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import React from 'react'
-
+import { useContext, useEffect } from "react";
+import { GroupContext } from "../../context/groupContext/GroupContext";
+import { deleteGroups, getGroups } from "../../context/groupContext/apiCalls";
 export default function GroupList() {
-  const [data, setData] = useState(groupRows);
+  const { groups, dispatch } = useContext(GroupContext);
+
+  useEffect(() => {
+      getGroups(dispatch);
+  },[dispatch]);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+      deleteGroups(id, dispatch);
   };
-  
+
+
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", width: 90 },
     {
       field: "group",
       headerName: "Група",
@@ -22,8 +29,7 @@ export default function GroupList() {
       renderCell: (params) => {
         return (
           <div className="groupListItem">
-            <img className="groupListImg" src={params.row.img} alt="" />
-            {params.row.name}
+            {params.row.groupname}
           </div>
         );
       },
@@ -55,11 +61,11 @@ export default function GroupList() {
   return (
     <div className="groupList">
       <DataGrid
-        rows={data}
+        rows={groups}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
-        checkboxSelection
+        getRowId={(r) => r._id}
       />
     </div>
   );

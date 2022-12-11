@@ -6,13 +6,40 @@ import {
   Publish,
 } from "@material-ui/icons";
 import "./teacher.css";
+import { PidrozdilContext } from "../../context/pidrozdilContext/PidrozdilContext"
+import { updateTeachers } from "../../context/teacherContext/apiCalls"
+import { TeacherContext } from "../../context/teacherContext/TeacherContext"
+import { useContext, useEffect, useState } from "react"
 
 export default function Teacher() {
+
+  const { pidrozdils, dispatch: dispatchCatgorie } = useContext(PidrozdilContext);
+
+  const [teachers, setTeacher] = useState(null)
+
+  const { dispatch } = useContext(TeacherContext)
+
+  const handleChange = (e) => {
+      const value = e.target.value;
+      setTeacher({ ...teachers, [e.target.name]: value });
+  };
+
+  const hedleSelect = (e) => {
+      const value = e.target.value;
+      setTeacher({ ...teachers, [e.target.name]: value });
+  };
+
+  console.log(teachers);
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+
+      updateTeachers(teachers, dispatch)
+  };
   return (
     <div className="teacher">
       <div className="teacherTitleContainer">
         <h1 className="teacherTitle">Edit Teacher</h1>
-
       </div>
       <div className="teacherContainer">
         <div className="teacherShow">
@@ -46,6 +73,7 @@ export default function Teacher() {
               <MailOutline className="teacherShowIcon" />
               <span className="teacherShowInfoTitle">annabeck99@gmail.com</span>
             </div>
+            
           </div>
         </div>
         <div className="teacherUpdate">

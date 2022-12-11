@@ -36,3 +36,16 @@ export const getGroups = async (req,res,next)=>{
     next(err);
   }
 }
+export const getGroupTeachers = async (req, res, next) => {
+  try {
+    const group = await Group.findById(req.params.id);
+    const list = await Promise.all(
+      Group.teachers.map((teacher) => {
+        return Teacher.findById(teacher);
+      })
+    );
+    res.status(200).json(list)
+  } catch (err) {
+    next(err);
+  }
+};

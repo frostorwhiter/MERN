@@ -4,24 +4,29 @@ import { DeleteOutline } from "@material-ui/icons";
 import { questionRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import { useContext, useEffect } from "react";
+import { QuestionContext } from "../../context/questionContext/QuestionContext";
+import { deleteQuestions, getQuestions } from "../../context/questionContext/apiCalls";
 export default function QuestionList() {
-  const [data, setData] = useState(questionRows);
+  const { questions, dispatch } = useContext(QuestionContext);
+
+  useEffect(() => {
+      getQuestions(dispatch);
+  },[dispatch]);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+      deleteQuestions(id, dispatch);
   };
-  
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", width: 90 },
     {
       field: "question",
-      headerName: "Факультети",
+      headerName: "Питання",
       width: 300,
       renderCell: (params) => {
         return (
           <div className="questionListItem">
-            {params.row.name}
+              {params.row.Questiontitle}
           </div>
         );
       },
@@ -36,13 +41,12 @@ export default function QuestionList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/question/" + params.row.id}>
+            <Link to={"/question/" + params.row._id}>
               <button className="questionListEdit">Редагувати</button>
             </Link>
-            <button className="questionListEdit">Огляд</button>
             <DeleteOutline
               className="questionListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -53,12 +57,11 @@ export default function QuestionList() {
   return (
     <div className="questionList">
       <DataGrid
-        rows={data}
+        rows={questions}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
-        checkboxSelection
-      />
+        pageSize={20}
+        getRowId={(r) => r._id}/>
     </div>
   );
 }

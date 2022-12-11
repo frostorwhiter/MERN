@@ -6,6 +6,7 @@ import authRoute from "./routes/auth.js"
 import groupsRoute from "./routes/groups.js"
 import pidrozdilsRoute from "./routes/pidrozdils.js"
 import teachersRoute from "./routes/teachers.js"
+import questionsRoute from "./routes/questions.js"
 
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -34,6 +35,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/groups", groupsRoute);
 app.use("/api/pidrozdils", pidrozdilsRoute);
 app.use("/api/teachers", teachersRoute);
+app.use("/api/questions", questionsRoute);
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
   const errorMessage = err.message || "Something went wrong!";

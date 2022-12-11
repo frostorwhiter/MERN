@@ -17,6 +17,7 @@ import Pidrozdil from "./pages/pidrozdil/Pidrozdil";
 import NewPidrozdil from "./pages/newPidrozdil/NewPidrozdil";
 import NewTeacher from "./pages/newTeacher/NewTeacher";
 import NewGroup from "./pages/newGroup/NewGroup";
+import NewQuestion from "./pages/newQuestion/NewQuestion";
 
 import Question from "./pages/question/Question"
 import QuestionList from "./pages/questionList/QuestionList"
@@ -45,9 +46,9 @@ function App() {
             <Route path="login" element={<Login/>} />
             <Route index element={<ProtectedRoute><Home /></ProtectedRoute>}> 
             </Route>
-            <Route path="teacherrating" element={<Teacherrating />}>
+            <Route path="teachers/teacherrating/:teacherId" element={<ProtectedRoute><Teacherrating /></ProtectedRoute>}>
             </Route>
-            <Route path="group" element={<ProtectedRoute><Group /></ProtectedRoute>}>
+            <Route path="group/:groupId" element={<ProtectedRoute><Group /></ProtectedRoute>}>
             </Route>
             <Route path="newGroup" element={<ProtectedRoute><NewGroup /></ProtectedRoute>}>
             </Route>
@@ -56,17 +57,19 @@ function App() {
             </Route>
             <Route path="teacher/:teacherId" element={<ProtectedRoute><Teacher /></ProtectedRoute>}>
             </Route>
-            <Route path="newTeacher" element={<ProtectedRoute><NewTeacher /></ProtectedRoute>}>
+            <Route path="newTeacher" element={<ProtectedRoute><NewTeacher/></ProtectedRoute>}>
             </Route>
-            <Route path="pidrozdils" element={<ProtectedRoute><PidrozdilList columns={groupColumns}/></ProtectedRoute>}>
+            <Route path="pidrozdils" element={<ProtectedRoute><PidrozdilList /></ProtectedRoute>}>
             </Route>
-            <Route path="pidrozdil/:pidrozdilId" element={<ProtectedRoute><Pidrozdil /></ProtectedRoute>}>
+            <Route path="pidrozdils/:pidrozdilId" element={<ProtectedRoute><Pidrozdil/></ProtectedRoute>}>
             </Route>
             <Route path="newpidrozdil" element={<ProtectedRoute><NewPidrozdil/></ProtectedRoute>}>
             </Route>
-            <Route path="Question" element={<ProtectedRoute><Question /></ProtectedRoute>}>
+            <Route path="question/:questionId" element={<ProtectedRoute><Question /></ProtectedRoute>}>
             </Route>
-            <Route path="Questions" element={<ProtectedRoute><QuestionList /></ProtectedRoute>}>
+            <Route path="questions" element={<ProtectedRoute><QuestionList /></ProtectedRoute>}>
+            </Route>
+            <Route path="newQuestion" element={<ProtectedRoute><NewQuestion/></ProtectedRoute>}>
             </Route>
           </Route>
         </Routes>

@@ -40,8 +40,11 @@
 }
 
 .newTeacherSelect{
-    height: 40px;
-    border-radius: 5px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
 }
 
 .newTeacherButton{

@@ -9,10 +9,10 @@ export const getTeachersFailure = () => ({
     type: "GET_TEACHER_FAILURE",
 });
 
-
 export const deleteTeachersStart = () => ({
     type: "DELETE_TEACHER_START",
 });
+
 export const deleteTeachersSuccess = (id) => ({
     type: "DELETE_TEACHER_SUCCESS",
     payload: id,

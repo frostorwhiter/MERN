@@ -9,13 +9,11 @@ export default function Question() {
       </div>
       <div className="questionTop">
           <div className="questionTopRight">
-          <div className="questionUpdateItem">
-            <label>Phone</label>
-            <input
+          <div className="questionUpdateItem"><input
                   type="text"
                   placeholder="Текст Питання"
                   className="questionUpdateInput"
-            />
+                />
             </div>
           </div>
       </div>

@@ -10,7 +10,7 @@ export default function Teacherrating() {
      <FeaturedInfo/>
       <Chart data={teacherData} title="Аналіз опитування про викладача" grid dataKey="Середня оцінка"/>
       <div className="homeWidgets">
-        <WidgetSm/>
+      <WidgetSm/>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import "./newPidrozdil.css";
 import React from 'react'
-import { useContext, useEffect, useState } from "react"
-import { createPidrozdils, getPidrozdils } from "../../context/pidrozdilContext/apiCalls"
+import { useContext, useState } from "react"
+import { createPidrozdils } from "../../context/pidrozdilContext/apiCalls"
 import { PidrozdilContext } from "../../context/pidrozdilContext/PidrozdilContext"
 export default function NewPidrozdil() {
     const [pidrozdils, setPidrozdil] = useState(null)
@@ -10,13 +10,10 @@ export default function NewPidrozdil() {
         const value = e.target.value;
         setPidrozdil({ ...pidrozdils, [e.target.name]: value });
     };
-
-
     console.log(pidrozdils);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         createPidrozdils(pidrozdils, dispatch)
     };
   return (
@@ -25,13 +22,13 @@ export default function NewPidrozdil() {
       <form className="addPidrozdilForm">
         <div className="addPidrozdilItem">
           <label>Image</label>
-          <input type="file" id="file" name="img" onChange={handleChange}/>
+          <input type="file" id="file" name="photos" onChange={handleChange}/>
         </div>
         <div className="addPidrozdilItem">
           <label>Назва</label>
-          <input type="text" placeholder="Назва Факультету" name="name" onChange={handleChange}/>
+          <input type="text" placeholder="Назва Факультетуaaa" name="name" onChange={handleChange}/>
         </div>
-        <button className="addPidrozdilButton" onChange={handleSubmit}>Створити</button>
+        <button className="addPidrozdilButton" onClick={handleSubmit}>Створити</button>
       </form>
     </div>
   );

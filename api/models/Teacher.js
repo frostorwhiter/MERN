@@ -1,17 +1,21 @@
 import mongoose from "mongoose";
 const TeacherSchema = new mongoose.Schema(
   {
-    title: {
+    teachername: {
       type: String,
       required: true,
     },
-    desc: {
-      type: String,
-      required: true,
+    teacherphoto: {
+      type: [String],
     },
     group: {
       type: [String],
     },
+    pidrozdil: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Pidrozdil"
+
+    }]
   },
   { timestamps: true }
 );

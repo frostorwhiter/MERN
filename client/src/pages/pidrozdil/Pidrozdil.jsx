@@ -3,8 +3,29 @@ import "./pidrozdil.css";
 import Chart from "../../components/chart/Chart"
 import {pidrozdilData} from "../../dummyData"
 import { Publish } from "@material-ui/icons";
+import { useContext, useEffect , useState } from "react";
+import { PidrozdilContext } from "../../context/pidrozdilContext/PidrozdilContext";
 
 export default function Pidrozdil() {
+    const { categories, dispatch: dispatchCatgorie } = useContext(PidrozdilContext);
+
+    const [pidrozdil, setTransaction] = useState(null)
+
+    const { dispatch } = useContext(PidrozdilContext)
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setTransaction({ ...pidrozdil, [e.target.name]: value });
+    };
+
+    const hedleSelect = (e) => {
+        const value = e.target.value;
+        setTransaction({ ...pidrozdil, [e.target.name]: value });
+    };
+
+    console.log(pidrozdil);
+
+
   return (
     <div className="pidrozdil">
       <div className="pidrozdilTitleContainer">

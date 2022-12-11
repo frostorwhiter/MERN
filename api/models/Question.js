@@ -1,21 +1,21 @@
 import mongoose from "mongoose";
 const QuestionSchema = new mongoose.Schema(
   {
-    title: {
+    Questiontitle: {
       type: String,
       required: true,
     },
     desc: {
       type: String,
-      required: true,
+      required: false,
+    },
+    answer: {
+      type: Number,
+      required: false,
     },
     type:{
         type: String,
-        required: true,
-    },
-    answers:{
-      type:Number,
-      required: true,
+        required: false,
     }
   },
   { timestamps: true }

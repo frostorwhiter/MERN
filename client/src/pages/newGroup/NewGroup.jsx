@@ -20,12 +20,6 @@ export default function NewGroup() {
       const value = e.target.value;
       setGroup({ ...groups, [e.target.name]: value });
   };
-
-  const hedleSelect = (e) => {
-      const value = e.target.value;
-      setGroup({ ...groups, [e.target.name]: value });
-  };
-
   console.log(groups);
 
   const handleSubmit = (e) => {
@@ -33,7 +27,10 @@ export default function NewGroup() {
 
       createGroups(groups, dispatch)
   };
-
+  const hedleSelect = (e) => {
+    const value = e.target.value;
+    setGroup({ ...groups, [e.target.name]:value});
+};
 
   return (
     <div className="newGroup">
@@ -48,36 +45,12 @@ export default function NewGroup() {
           <input type="text" placeholder="John Smith" onChange={handleChange}/>
         </div>
         <div className="newGroupItem">
-          <label>Email</label>
-          <input type="email" placeholder="john@gmail.com" onChange={handleChange} />
-        </div>
-        <div className="newGroupItem">
-          <label>Phone</label>
-          <input type="text" placeholder="+1 123 456 78" onChange={handleChange}/>
-        </div>
-        
-        <div className="newGroupItem">
-          <label>Active</label>
-          <select className="newGroupSelect" name="active" id="active">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div>
-        <div className="newGroupItem">
           <label>Факультет</label>
-          <select className="newGroupSelect" name="active" id="active">
-          </select>
-        </div>
-        <div className="groupUpdateUpload">
-                <img
-                  className="groupUpdateImg"
-                  src="https://kim.pnu.edu.ua/wp-content/uploads/sites/58/2018/06/cropped-logo-e1528979752421-1.png"
-                  alt=""
-                />
-                <label htmlFor="file">
-                  <Publish className="groupUpdateIcon" />
-                </label>
-                <input type="file" id="file" style={{ display: "none" }} />
+          <select multiple name="pidrozdils" onChange={hedleSelect} >
+                  {pidrozdils.map((pidrozdil) => (
+                      <option key={pidrozdil._id} value={pidrozdil.name}>
+                       {pidrozdil.name}
+                        </option> ))} </select>                
         </div>
         <button className="newGroupButton" onClick={handleSubmit}>Create</button>
       </form>

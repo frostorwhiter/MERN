@@ -6,6 +6,7 @@ import { Publish } from "@material-ui/icons";
 import React from 'react'
 
 export default function Group() {
+    
   return (
     <div className="group">
       <div className="groupTitleContainer">

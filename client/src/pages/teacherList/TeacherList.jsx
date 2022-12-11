@@ -1,20 +1,25 @@
 import "./teacherList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { teacherRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-
+import { useContext, useEffect } from "react";
+import { TeacherContext } from "../../context/teacherContext/TeacherContext";
+import { deleteTeachers, getTeachers } from "../../context/teacherContext/apiCalls";
 export default function TeacherList() {
-  const [data, setData] = useState(teacherRows);
+  const { teachers, dispatch } = useContext(TeacherContext);
+
+  useEffect(() => {
+      getTeachers(dispatch);
+  },[dispatch]);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+      deleteTeachers(id, dispatch);
   };
   
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", width: 90 },
     {
       field: "teacher",
       headerName: "П.І.Б.",
@@ -22,17 +27,21 @@ export default function TeacherList() {
       renderCell: (params) => {
         return (
           <div className="teacherListTeacher">
-            <img className="teacherListImg" src={params.row.avatar} alt="" />
             {params.row.teachername}
           </div>
         );
       },
     },
-    { field: "email", headerName: "Email", width: 200 },
     {
-      field: "transaction",
+      field: "pidrozdil",
       headerName: "Назва Факультету",
       width: 200,
+      renderCell: (params) => {
+        return (
+          <div className="teacherListTeacher">
+            {params.row.name}
+          </div>
+        );},
     },
     {
       field: "action",
@@ -41,15 +50,15 @@ export default function TeacherList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"Teacherrating/"+ params.row.id}>
+            <Link to={"Teacherrating/"+ params.row._id}>
               <button className="teacherListEdit">Огляд</button>
             </Link>
-            <Link to={"/teacher/" + params.row.id}>
+            <Link to={"/teacher/" + params.row._id}>
               <button className="teacherListEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="teacherListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -60,11 +69,12 @@ export default function TeacherList() {
   return (
     <div className="teacherList">
       <DataGrid
-        rows={data}
+        rows={teachers}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
-        checkboxSelection
+        rowsPerPageOptions={[5]}
+        getRowId={(r) => r._id}
       />
     </div>
   );

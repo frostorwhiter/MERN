@@ -11,7 +11,7 @@ export default function PidrozdilList() {
 
     useEffect(() => {
         getPidrozdils(dispatch);
-    });
+    },[dispatch]);
 
     const handleDelete = (id) => {
         deletePidrozdils(id, dispatch);
@@ -19,7 +19,7 @@ export default function PidrozdilList() {
 
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", width: 90 },
     {
       field: "pidrozdils",
       headerName: "Факультети",
@@ -32,9 +32,6 @@ export default function PidrozdilList() {
         );
       },
     },
-    
-    
-    
     {
       field: "action",
       headerName: "Дії",
@@ -42,13 +39,13 @@ export default function PidrozdilList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={{ pathname: "/pidrozdils" + params.row._id, pidrozdil: params.row }}>
+            <Link to={{ pathname: "/pidrozdils/" + params.row._id, pidrozdil: params.row }}>
               <button className="pidrozdilListEdit">Огляд</button>
             </Link>
             <button className="pidrozdilListEdit">Редагувати</button>
             <DeleteOutline
               className="pidrozdilListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -63,7 +60,8 @@ export default function PidrozdilList() {
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
-        checkboxSelection
+        rowsPerPageOptions={[5]}
+        getRowId={(r) => r._id}
       />
     </div>
   );

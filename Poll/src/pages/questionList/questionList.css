@@ -1,0 +1,48 @@
+.questionList{
+    flex: 4;
+}
+
+.questionListItem{
+    display: flex;
+    align-items: center;
+}
+
+.questionListImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+.teacherUpdateButton{
+        border-radius: 15px;
+        border: none;
+        padding: 5px;
+        size: 12%;
+        width: 132px;
+
+        text-align: center;
+        cursor: pointer;
+        background-color: darkblue;
+        color: white;
+        font-weight: 600;
+}
+.Poll{
+    text-align: center;
+    border-radius: 15px;
+
+}
+.questionListEdit{
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: #3bb077;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.questionListDelete{
+    color: red;
+    cursor: pointer;
+}

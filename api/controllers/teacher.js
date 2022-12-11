@@ -1,5 +1,6 @@
 import Teacher from "../models/Teacher.js";
 import Pidrozdil from "../models/Pidrozdil.js";
+import Group from "../models/Group.js"
 import { createError } from "../utils/error.js";
 
 export const createTeacher = async (req, res, next) => {
@@ -76,6 +77,19 @@ export const getTeachers = async (req, res, next) => {
   try {
     const teachers = await Teacher.find();
     res.status(200).json(teachers);
+  } catch (err) {
+    next(err);
+  }
+};
+export const getTeachersGroup = async (req, res, next) => {
+  try {
+    const Teacher = await Teacher.findById(req.params.id);
+    const list = await Promise.all(
+      Teacher.groups.map((group) => {
+        return Group.findById(group);
+      })
+    );
+    res.status(200).json(list)
   } catch (err) {
     next(err);
   }

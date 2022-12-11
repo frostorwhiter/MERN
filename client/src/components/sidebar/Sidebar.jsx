@@ -83,6 +83,12 @@ export default function Sidebar() {
               Питання
             </li>
           </Link>
+          <Link to="/newQuestion" className="link">
+              <li className="sidebarListItem">
+                <AddCircle className="sidebarIcon" />
+                Добавити нове питання
+              </li>
+            </Link>
           </ul>
         </div>
         <div className="sidebarMenu">

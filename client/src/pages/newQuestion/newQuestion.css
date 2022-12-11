@@ -1,0 +1,60 @@
+.newQuestion {
+  flex: 4;
+}
+
+.newQuestionForm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.newQuestionItem {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.newQuestionItem > label {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(151, 150, 150);
+}
+
+.newQuestionItem > input {
+  height: 20px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.newQuestionGender > input {
+  margin-top: 15px;
+}
+
+.newQuestionGender>label{
+    margin: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+.newQuestionSelect{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+}
+
+.newQuestionButton{
+    width: 200px;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    padding: 7px 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+}

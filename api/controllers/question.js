@@ -1,9 +1,11 @@
 import Question from "../models/Question.js";
 import Group from "../models/Group.js";
+import Teacher from "../models/Teacher.js";
 import { createError } from "../utils/error.js";
 
 export const createQuestion = async (req, res, next) => {
   const groupId = req.params.groupid;
+  const teacherId = req.params.teacherId
   const newQuestion = new Question(req.body);
 
   try {
@@ -20,7 +22,6 @@ export const createQuestion = async (req, res, next) => {
     next(err);
   }
 };
-
 export const updateQuestion = async (req, res, next) => {
   try {
     const updatedQuestion = await Question.findByIdAndUpdate(
@@ -79,4 +80,12 @@ export const getQuestions = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+export const getQuestionsByTeacher = async(req, res, next) =>{
+  try {
+    const questions = await Teacher.findById(req.params.teacherId).question;
+    res.status(200).json(questions);
+  }
+    catch (err) {
+    next(err);}
 };

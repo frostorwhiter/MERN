@@ -10,11 +10,11 @@ export default function NewTeacher() {
 
   const [teachers, setTeacher] = useState(null)
   const { dispatch } = useContext(TeacherContext)
-  const { pidrozdils, dispatch: dispatchCatgorie } = useContext(PidrozdilContext);
+  const { pidrozdils, dispatch: dispatchPidrozdils } = useContext(PidrozdilContext);
 
   useEffect(() => {
-      getPidrozdils(dispatchCatgorie)
-  }, [dispatchCatgorie]);
+      getPidrozdils(dispatchPidrozdils)
+  }, [dispatchPidrozdils]);
 
   const handleChange = (e) => {
       const value = e.target.value;
@@ -23,14 +23,13 @@ export default function NewTeacher() {
 
   const hedleSelect = (e) => {
       const value = e.target.value;
-      setTeacher({ ...teachers, [e.target.name]: value });
+      setTeacher({ ...teachers, [e.target.name]:value});
   };
 
   console.log(teachers);
 
   const handleSubmit = (e) => {
       e.preventDefault();
-
       createTeachers(teachers, dispatch)
   };
 
@@ -41,7 +40,7 @@ export default function NewTeacher() {
       <form className="newTeacherForm">
         <div className="newTeacherItem">
           <label>Teachername</label>
-          <input type="text" placeholder="john" onChange={handleChange}/>
+          <input type="text" placeholder="john" name="teachername" onChange={handleChange}/>
         </div>
         <div className="newTeacherItem">
           <label>Full Name</label>
@@ -55,24 +54,20 @@ export default function NewTeacher() {
           <label>Phone</label>
           <input type="text" placeholder="+1 123 456 78" onChange={handleChange}/>
         </div>
-        
-        <div className="newTeacherItem">
-          <label>Active</label>
-          <select className="newTeacherSelect" name="active" id="active">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div>
-        <div className="newTeacherItem">
-          <label>Факультет</label>
-          <select className="newTeacherSelect" name="active" id="active">
-          </select>
-        </div>
+        <div className="newTeacherSelect">
+            <label >Pidrozdils</label>
+              <select multiple name="pidrozdils" onChange={hedleSelect} >
+                  {pidrozdils.map((pidrozdil) => (
+                      <option key={pidrozdil._id} value={pidrozdil.name}>
+                       {pidrozdil.name}
+                        </option> ))} </select>
+                        </div>
         <div className="teacherUpdateUpload">
                 <img
                   className="teacherUpdateImg"
                   src="https://kim.pnu.edu.ua/wp-content/uploads/sites/58/2018/06/cropped-logo-e1528979752421-1.png"
                   alt=""
+                  name="teacherphoto"
                 />
                 <label htmlFor="file">
                   <Publish className="teacherUpdateIcon" />
